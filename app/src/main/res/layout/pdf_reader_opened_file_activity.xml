@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:bind="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="viewModel"
+            type="org.kidinov.kura_test.pdf_reader_opened_file.presentation.PdfReaderOpenedFileViewModel"/>
+
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true"
+            tools:context=".pdf_reader_opened_file.presentation.PdfReaderOpenedFileActivity">
+
+            <android.support.design.widget.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:theme="@style/AppTheme.AppBarOverlay">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+            </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.joanzapata.pdfview.PDFView
+                    android:id="@+id/pdf_view"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:layout_weight="1"
+                    bind:onLoadCompleteListener="@{viewModel.onLoadCompleteListener}"
+                    bind:onPageChangeListener="@{viewModel.onPageChangeListener}"
+                    bind:openFile="@{viewModel.fileToShow}"/>
+
+                <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:background="@android:color/white"
+                    android:paddingTop="5dp">
+
+                    <com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBar
+                        android:id="@+id/seek_bar"
+                        android:layout_width="1dp"
+                        android:layout_height="0dp"
+                        android:progressDrawable="@android:color/transparent"
+                        app:seekBarRotation="CW90"/>
+
+                </com.h6ah4i.android.widget.verticalseekbar.VerticalSeekBarWrapper>
+
+            </LinearLayout>
+
+
+        </android.support.design.widget.CoordinatorLayout>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerInParent="true"
+            android:background="@color/half_transparent"
+            android:gravity="center"
+            android:text="@{viewModel.pageNumber}"
+            android:textColor="#ffffff"
+            android:textSize="34sp"
+            android:visibility="@{viewModel.showPageNumber ? View.VISIBLE : View.GONE}"
+            tools:text="5/6"/>
+
+    </RelativeLayout>
+</layout>

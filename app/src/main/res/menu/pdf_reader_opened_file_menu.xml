@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/open_file"
+        android:icon="@drawable/ic_folder_open_24dp"
+        android:title="@string/open_file"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/go_to_page"
+        android:icon="@drawable/ic_list_24dp"
+        android:title="@string/go_to_page"
+        app:showAsAction="ifRoom" />
+</menu>
